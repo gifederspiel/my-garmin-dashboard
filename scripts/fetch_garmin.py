@@ -31,11 +31,10 @@ def get_client():
         )
 
     if has_oauth1 or has_oauth2:
-        # 🔴 the important part: use garth.resume, not client.load
         garth.resume(str(session_dir))
         return Garmin()
 
-    # optional fallback
+    # fallback (may still fail on GH IPs, but we try)
     user = os.getenv("GARMIN_USERNAME")
     pw = os.getenv("GARMIN_PASSWORD")
     if user and pw:
@@ -43,7 +42,7 @@ def get_client():
         g.login()
         return g
 
-    raise RuntimeError("No tokens and no credentials available")
+    raise RuntimeError("no tokens and no credentials available")
 
 
 def main():
