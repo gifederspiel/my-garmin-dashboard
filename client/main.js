@@ -12,7 +12,6 @@ const statusEl = document.getElementById('status');
 const summaryStatusEl = document.getElementById('summary-status');
 const summaryCardsEl = document.getElementById('summary-cards');
 const activitiesEl = document.getElementById('activities');
-const apiTargetEl = document.getElementById('api-target');
 const toggleButtons = Array.from(document.querySelectorAll('#range-toggle [data-range]'));
 
 let currentRange = 'week';
@@ -20,10 +19,6 @@ let currentRange = 'week';
 init();
 
 function init() {
-  apiTargetEl.textContent = API_BASE_URL;
-  apiTargetEl.title = 'Click to change the API base URL';
-  apiTargetEl.addEventListener('click', handleApiTargetChange);
-
   toggleButtons.forEach((button) => {
     button.addEventListener('click', () => {
       const { range } = button.dataset;
@@ -37,14 +32,6 @@ function init() {
   updateRangeButtons();
   loadSummary();
   loadActivities();
-}
-
-function handleApiTargetChange() {
-  const next = prompt('Set Strava API base URL', API_BASE_URL);
-  if (next && next.trim().length > 0) {
-    localStorage.setItem('STRAVA_API_BASE_URL', next.trim());
-    window.location.reload();
-  }
 }
 
 function updateRangeButtons() {

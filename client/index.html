@@ -16,6 +16,9 @@
             A single view for weekly mileage, route recaps, heart-rate trends, and the strength work that keeps the engine
             running.
           </p>
+          <p class="app-disclaimer" role="status">
+            First API call can take ~50 seconds while the Render backend spins up.
+          </p>
         </div>
       </div>
     </header>
@@ -45,14 +48,6 @@
         <div id="activities" class="activities"></div>
       </section>
     </main>
-
-    <footer class="app-footer">
-      <span>
-        API target:
-        <button id="api-target" type="button" class="api-target-button"></button>
-      </span>
-    </footer>
-
     <script>
       window.__STRAVA_API_BASE_URL__ = localStorage.getItem('STRAVA_API_BASE_URL') || undefined;
     </script>
